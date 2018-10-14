@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="559.0" prefWidth="442.0" spacing="10.0" xmlns="http://javafx.com/javafx/8"
+      fx:controller="bicyclegui.editrepair.EditRepairController">
+    <children>
+        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Edit repair" VBox.vgrow="NEVER">
+            <font>
+                <Font size="28.0"/>
+            </font>
+            <VBox.margin>
+                <Insets bottom="15.0"/>
+            </VBox.margin>
+        </Label>
+        <HBox spacing="15.0">
+            <children>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox spacing="10.0">
+                    <children>
+                        <Label fx:id="invalidSentDateLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a valid date" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <DatePicker fx:id="dateSentField" disable="true" editable="false" focusTraversable="false"
+                                    maxWidth="1.7976931348623157E308" promptText="Date sent" VBox.vgrow="NEVER"/>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Repair request description:"
+                               VBox.vgrow="NEVER">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="invalidReqDescLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a description" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="reqDescField" focusTraversable="false" prefHeight="100.0" VBox.vgrow="NEVER"/>
+                        <Label fx:id="invalidPriceLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="In price field, please enter numbers only"
+                               textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="priceField" focusTraversable="false" maxWidth="1.7976931348623157E308"
+                                   promptText="Price(NOK)">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </TextField>
+                        <Label fx:id="invalidDateRecLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a valid date" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <DatePicker fx:id="dateReceivedField" focusTraversable="false" maxWidth="1.7976931348623157E308"
+                                    promptText="Date received"/>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Repair description:">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="invalidDescLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a description" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="descField" focusTraversable="false" prefHeight="100.0"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox spacing="15.0" VBox.vgrow="NEVER">
+            <children>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterClick" prefWidth="75.0"
+                        text="Done" HBox.hgrow="NEVER">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelClick" prefWidth="75.0"
+                        text="Cancel" HBox.hgrow="NEVER">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Region HBox.hgrow="ALWAYS"/>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+    </padding>
+</VBox>

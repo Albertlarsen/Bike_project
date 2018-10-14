@@ -1,0 +1,12 @@
+.hyperlink:visited {
+    -fx-underline: false;
+    -fx-text-fill: #0B94C9;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;
+}
+
+.hyperlink:focused, .hyperlink:pressed {
+    -fx-text-fill: #323232;
+}

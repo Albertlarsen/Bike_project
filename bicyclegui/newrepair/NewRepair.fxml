@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="383.0" prefWidth="399.0" spacing="10.0" xmlns="http://javafx.com/javafx/8"
+      fx:controller="bicyclegui.newrepair.NewRepairController">
+    <children>
+        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Register repair" VBox.vgrow="NEVER">
+            <font>
+                <Font size="28.0"/>
+            </font>
+            <VBox.margin>
+                <Insets bottom="15.0"/>
+            </VBox.margin>
+        </Label>
+        <HBox spacing="15.0">
+            <children>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox spacing="10.0">
+                    <children>
+                        <Label fx:id="invalidDateLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a date" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <DatePicker fx:id="dateField" focusTraversable="false" maxWidth="1.7976931348623157E308"
+                                    promptText="Date sent" VBox.vgrow="NEVER"/>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Repair request description:"
+                               VBox.vgrow="NEVER">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="invalidDescLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a description" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="descField" focusTraversable="false" prefHeight="100.0" VBox.vgrow="NEVER"/>
+                    </children>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+            </children>
+            <VBox.margin>
+                <Insets bottom="15.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox spacing="15.0" VBox.vgrow="NEVER">
+            <children>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#onRegisterClick" prefWidth="75.0"
+                        text="Register" HBox.hgrow="NEVER">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Button minWidth="-Infinity" mnemonicParsing="false" onAction="#onCancelClick" prefWidth="75.0"
+                        text="Cancel" HBox.hgrow="NEVER">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+                <Region HBox.hgrow="ALWAYS"/>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+    </padding>
+</VBox>

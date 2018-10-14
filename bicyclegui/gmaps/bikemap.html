@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+        }
+
+        #cont {
+            height: 100%;
+            width: 100%;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        a {
+            color: #0B94C9;
+        }
+
+        a:active {
+            color: #323232;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #outerbattery {
+            height: 30px;
+            width: 100px;
+            background: linear-gradient(#F0F0F0, #FDFDFD, #F0F0F0);
+            border: 1px solid #BABABA;
+            padding: 2px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        a[href^="http://maps.google.com/maps"],
+        a[href^="https://maps.google.com/maps"],
+        a[href^="https://www.google.com/maps"] {
+            display: none !important;
+        }
+
+        .gm-bundled-control .gmnoprint {
+            display: block;
+        }
+
+        .gm-style-cc {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<script src="script.js"></script>
+<div id="cont">
+    <div id="map"></div>
+</div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJymT-EK3FM7sb6IKYjCnZ-F8R7zrAcEE&callback=initMap">
+</script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.WebView?>
+
+<StackPane prefHeight="466.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bicyclegui.bicycleview.BicycleViewController">
+    <children>
+        <VBox stylesheets="@../linkstyles.css">
+            <children>
+                <MenuBar fx:id="BikeMenuBar" VBox.vgrow="NEVER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <Menu mnemonicParsing="false" text="New">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#onNewBikeClick" text="Bicycle">
+                                            <accelerator>
+                                                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                            </accelerator>
+                                        </MenuItem>
+                                        <MenuItem mnemonicParsing="false" onAction="#onNewDockingStationClick" text="Docking Station">
+                                            <accelerator>
+                                                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                            </accelerator>
+                                        </MenuItem>
+                                    </items>
+                                </Menu>
+                                <MenuItem mnemonicParsing="false" onAction="#onEditTypeClick" text="Edit bicycle types" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem mnemonicParsing="false" onAction="#onExitClick" text="Exit">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="W" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Account">
+                            <items>
+                                <MenuItem fx:id="emailMenu" disable="true" mnemonicParsing="false" style="-fx-opacity: 1;" text="placeholder@email.com" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem mnemonicParsing="false" onAction="#onChangePasswordClick" text="Change password" />
+                                <MenuItem mnemonicParsing="false" onAction="#onLogoutClick" text="Log Out">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                            </items>
+                        </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onHelpClick" text="User manual" />
+                     </items>
+                  </Menu>
+                    </menus>
+                </MenuBar>
+                <TabPane fx:id="tabPane" prefHeight="378.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                    <tabs>
+                        <Tab text="Overview">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" text="Map" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <content>
+                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-padding: 0;">
+                                                    <children>
+                                                        <WebView fx:id="overviewmap" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Bicycles">
+                            <content>
+                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                    <children>
+                                        <VBox prefHeight="374.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="NEVER">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" minHeight="0.0" text="All Bicycles" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-padding: 0;">
+                                                            <children>
+                                                                <VBox AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <TextField fx:id="bicycleListSearchbar" focusTraversable="false" onKeyReleased="#onBicycleListSearch" promptText="Search" VBox.vgrow="NEVER">
+                                                                            <VBox.margin>
+                                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                                            </VBox.margin>
+                                                                        </TextField>
+                                                                        <ListView fx:id="bicycleList" layoutY="30.0" minWidth="-Infinity" prefWidth="164.0" VBox.vgrow="ALWAYS">
+                                                                            <VBox.margin>
+                                                                                <Insets bottom="-1.0" left="-1.0" right="-1.0" />
+                                                                            </VBox.margin>
+                                                                        </ListView>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <Hyperlink alignment="CENTER" focusTraversable="false" maxWidth="-Infinity" minWidth="-Infinity" onAction="#onNewBikeClick" prefWidth="200.0" text="+ register bicycle" VBox.vgrow="NEVER">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </VBox>
+                                        <VBox spacing="5.0" HBox.hgrow="NEVER">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefHeight="303.0" prefWidth="300.0" text="Info" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <VBox>
+                                                            <children>
+                                                                <GridPane fx:id="bicycleInfoBox" alignment="CENTER" hgap="10.0" maxHeight="1.7976931348623157E308" vgap="10.0" VBox.vgrow="NEVER">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" prefWidth="140.0" />
+                                                                        <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="133.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <Label prefHeight="49.0" prefWidth="97.0" text="Status:" GridPane.vgrow="NEVER" />
+                                                                        <Label prefHeight="48.0" prefWidth="144.0" text="Charge:" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                                                                        <Label prefHeight="37.0" prefWidth="140.0" text="Docking station:" GridPane.rowIndex="2" GridPane.vgrow="NEVER" />
+                                                                        <Label prefHeight="36.0" prefWidth="140.0" text="Distance traveled:" GridPane.rowIndex="3" GridPane.vgrow="NEVER" />
+                                                                        <Label prefHeight="60.0" prefWidth="166.0" text="Total trips" GridPane.rowIndex="4" GridPane.vgrow="NEVER" />
+                                                                        <Label prefHeight="53.0" prefWidth="143.0" text="Avg. trip length:" GridPane.rowIndex="5" GridPane.vgrow="NEVER" />
+                                                                        <Label prefHeight="58.0" prefWidth="141.0" text="Price:" GridPane.rowIndex="6" GridPane.vgrow="NEVER" />
+                                                                        <Label prefHeight="45.0" prefWidth="119.0" text="Date purchased:" GridPane.rowIndex="9" GridPane.vgrow="NEVER" />
+                                                                        <ProgressBar fx:id="bicycleInfoChargeBar" prefHeight="48.0" prefWidth="131.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <Label id="bicycleInfoCharge" fx:id="bicycleInfoCharge" alignment="CENTER" blendMode="DIFFERENCE" prefHeight="40.0" prefWidth="134.0" text="N/A" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                                            <font>
+                                                                                <Font name="System Bold" size="22.0" />
+                                                                            </font>
+                                                                        </Label>
+                                                                        <Label fx:id="bicycleInfoStatus" alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="131.0" text="N/A" GridPane.columnIndex="1" />
+                                                                        <Hyperlink fx:id="bicycleInfoDockingStation" alignment="CENTER_RIGHT" focusTraversable="false" onAction="#onBikeDsLabelClick" prefHeight="20.0" prefWidth="188.0" snapToPixel="false" style="-fx-padding: 0;" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                                        <Label fx:id="bicycleInfoDistanceTraveled" alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="257.0" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                                        <Label fx:id="bicycleInfoTotalTrips" alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="257.0" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                                        <Label fx:id="bicycleInfoAvgTripLength" alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="257.0" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                                        <Label fx:id="bicycleInfoPrice" alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="257.0" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                                        <Label fx:id="bicycleInfoDatePurchased" alignment="CENTER_RIGHT" prefHeight="68.0" prefWidth="257.0" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                                        <Label prefHeight="58.0" prefWidth="141.0" text="Make:" GridPane.rowIndex="7" />
+                                                                        <Label prefHeight="58.0" prefWidth="141.0" text="Type" GridPane.rowIndex="8" />
+                                                                        <Label fx:id="bicycleInfoMake" alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="141.0" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                                        <Label fx:id="bicycleInfoType" alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="141.0" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                                    </children>
+                                                                </GridPane>
+                                                                <Region VBox.vgrow="ALWAYS" />
+                                                            </children>
+                                                        </VBox>
+                                                    </content>
+                                                </TitledPane>
+                                                <HBox VBox.vgrow="NEVER">
+                                                    <children>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onShowRepairsClick" text="Show repairs">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Separator orientation="VERTICAL" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onEditBicycleClick" text="Edit">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Separator orientation="VERTICAL" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onDeleteBicycleClick" text="Delete">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets />
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" text="Location" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-padding: 0;" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" right="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                            <children>
+                                                                <WebView fx:id="bikemap" layoutX="125.0" layoutY="49.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <Region prefHeight="28.0" VBox.vgrow="NEVER" />
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab text="Repairs">
+                            <content>
+                                <HBox spacing="5.0">
+                                    <children>
+                                        <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" spacing="5.0" HBox.hgrow="NEVER">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefWidth="200.0" text="All Bicycles" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-padding: 0;">
+                                                            <children>
+                                                                <VBox layoutX="50.0" layoutY="26.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <TextField fx:id="rBicycleListSearchbar" onKeyReleased="#onRBicycleListSearch" promptText="Search">
+                                                                            <VBox.margin>
+                                                                                <Insets left="5.0" right="5.0" top="5.0" />
+                                                                            </VBox.margin>
+                                                                        </TextField>
+                                                                        <ListView fx:id="rBicycleList" VBox.vgrow="ALWAYS">
+                                                                            <VBox.margin>
+                                                                                <Insets bottom="-1.0" left="-1.0" right="-1.0" />
+                                                                            </VBox.margin>
+                                                                        </ListView>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <Region prefHeight="28.0" VBox.vgrow="NEVER" />
+                                            </children>
+                                        </VBox>
+                                        <VBox maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" spacing="5.0" HBox.hgrow="NEVER">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefWidth="200.0" text="Repairs" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-padding: 0;">
+                                                            <children>
+                                                                <ListView fx:id="repairList" layoutX="-36.0" layoutY="93.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0" />
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <Hyperlink alignment="CENTER" focusTraversable="false" maxWidth="1.7976931348623157E308" onAction="#onNewRepairClick" text="+ register repair" VBox.vgrow="NEVER">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                            </children>
+                                        </VBox>
+                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" minHeight="0.0" text="Info" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-padding: 0;">
+                                                            <children>
+                                                                <HBox fx:id="repairInfoBox" layoutX="105.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                                                            <children>
+                                                                                <GridPane hgap="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="200.0" vgap="25.0" VBox.vgrow="NEVER">
+                                                                                    <columnConstraints>
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                                    </columnConstraints>
+                                                                                    <rowConstraints>
+                                                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                                                    </rowConstraints>
+                                                                                    <children>
+                                                                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Date sent:" />
+                                                                                        <Label fx:id="dateSentLabel" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="N/A" GridPane.columnIndex="1" />
+                                                                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Date received:" GridPane.rowIndex="1" />
+                                                                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Repair time:" GridPane.rowIndex="2" />
+                                                                                        <Label fx:id="dateReceivedLabel" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                                        <Label fx:id="repairTimeLabel" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Price" GridPane.rowIndex="3" />
+                                                                                        <Label fx:id="repairPriceLabel" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                                                    </children>
+                                                                                    <padding>
+                                                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                                                    </padding>
+                                                                                </GridPane>
+                                                                                <Hyperlink fx:id="regArrivalLink" alignment="CENTER" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#onRegisterArrivalClick" text="Register arrival">
+                                                                                    <font>
+                                                                                        <Font size="14.0" />
+                                                                                    </font>
+                                                                                </Hyperlink>
+                                                                                <Region VBox.vgrow="ALWAYS" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                                                            <children>
+                                                                                <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Repair requirement:" VBox.vgrow="NEVER" />
+                                                                                <TextArea fx:id="repReqArea" editable="false" VBox.vgrow="ALWAYS" />
+                                                                                <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Repair description:" VBox.vgrow="NEVER" />
+                                                                                <TextArea fx:id="repDescArea" editable="false" VBox.vgrow="ALWAYS" />
+                                                                            </children>
+                                                                            <padding>
+                                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                                            </padding>
+                                                                        </VBox>
+                                                                    </children>
+                                                                    <padding>
+                                                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                                    </padding>
+                                                                </HBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <HBox VBox.vgrow="NEVER">
+                                                    <children>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onShowBicycleClick" text="Show bicycle" HBox.hgrow="NEVER">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Separator orientation="VERTICAL" HBox.hgrow="NEVER" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onEditRepairClick" text="Edit" HBox.hgrow="NEVER">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Separator orientation="VERTICAL" HBox.hgrow="NEVER" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onDeleteRepairClick" text="Delete" HBox.hgrow="NEVER">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab text="Docking stations">
+                            <content>
+                                <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                                    <children>
+                                        <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefWidth="250.0" spacing="5.0">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" minHeight="0.0" prefWidth="200.0" text="Docking stations" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-padding: 0;">
+                                                            <children>
+                                                                <VBox AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <TextField fx:id="dockSearchbar" focusTraversable="false" onKeyReleased="#onDockStationListSearch" promptText="Search" VBox.vgrow="NEVER">
+                                                                            <VBox.margin>
+                                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                                            </VBox.margin>
+                                                                        </TextField>
+                                                                        <ListView fx:id="dockStationList" layoutY="30.0" minWidth="-Infinity" VBox.vgrow="ALWAYS">
+                                                                            <VBox.margin>
+                                                                                <Insets bottom="-1.0" left="-1.0" right="-1.0" />
+                                                                            </VBox.margin>
+                                                                        </ListView>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <Hyperlink alignment="CENTER" focusTraversable="false" maxWidth="1.7976931348623157E308" onAction="#onNewDockingStationClick" text="+ register docking station">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Hyperlink>
+                                            </children>
+                                        </VBox>
+                                        <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefWidth="250.0" spacing="5.0">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" minHeight="0.0" text="Bicycles checked in" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-padding: 0;">
+                                                            <children>
+                                                                <VBox fx:id="bikesCheckedBox" layoutY="1.0" maxHeight="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <children>
+                                                                        <TextField fx:id="bicyclesCheckedInSearchbar" focusTraversable="false" onKeyReleased="#onBicyclesCheckedInSearch" promptText="Search" VBox.vgrow="NEVER">
+                                                                            <VBox.margin>
+                                                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                                            </VBox.margin>
+                                                                        </TextField>
+                                                                        <ListView fx:id="bikeCheckedList" layoutY="30.0" maxHeight="1.7976931348623157E308" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                                                            <VBox.margin>
+                                                                                <Insets bottom="-1.0" left="-1.0" right="-1.0" />
+                                                                            </VBox.margin>
+                                                                        </ListView>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <HBox VBox.vgrow="NEVER">
+                                                    <children>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onShowBicycleDsClick" text="Show bicycle">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Separator orientation="VERTICAL" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onRemoveBicycleDsClick" text="Remove bicycle">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Station info" VBox.vgrow="NEVER">
+                                                    <content>
+                                                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-padding: 0;" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <GridPane fx:id="stationInfoBox" alignment="CENTER_LEFT" hgap="50.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" vgap="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                                                    <children>
+                                                                        <Label maxHeight="1.7976931348623157E308" text="Current power usage:" GridPane.vgrow="NEVER" />
+                                                                        <Label text="Number of bicycles checked in:" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                                                                        <Label fx:id="dockInfoPowerUsage" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" text="N/A" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                                                                        <Label fx:id="dockInfoNbBikes" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" text="N/A" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                                    </children>
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints hgrow="NEVER" />
+                                                                        <ColumnConstraints hgrow="NEVER" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                                                                        <RowConstraints maxHeight="1.7976931348623157E308" vgrow="NEVER" />
+                                                                    </rowConstraints>
+                                                                    <padding>
+                                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                                    </padding>
+                                                                </GridPane>
+                                                            </children>
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" right="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" text="Location" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" style="-fx-padding: 0;" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <WebView fx:id="dockmap" layoutX="125.0" layoutY="49.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                            </children>
+                                                            <HBox.margin>
+                                                                <Insets bottom="5.0" right="5.0" top="5.0" />
+                                                            </HBox.margin>
+                                                        </AnchorPane>
+                                                    </content>
+                                                </TitledPane>
+                                                <HBox>
+                                                    <children>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onEditDockingstation" text="Edit">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Separator orientation="VERTICAL" />
+                                                        <Hyperlink focusTraversable="false" onAction="#onDeleteDockingstationClick" text="Delete">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Hyperlink>
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab text="Statistics">
+                            <content>
+                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" pannable="true" vbarPolicy="ALWAYS">
+                                    <content>
+                                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="25.0">
+                                            <children>
+                                                <LineChart fx:id="RepairChart" legendVisible="false" maxWidth="1.7976931348623157E308" snapToPixel="false" title="Repair costs">
+                                                    <xAxis>
+                                                        <CategoryAxis label="MONTH" side="BOTTOM" fx:id="x" />
+                                                    </xAxis>
+                                                    <yAxis>
+                                                        <NumberAxis fx:id="y" label="NOK" side="LEFT" />
+                                                    </yAxis>
+                                                </LineChart>
+                                                <BarChart fx:id="BicyclesPerDSChart" legendVisible="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="388.0" prefWidth="782.0" title="Bicycles Docked At Each Station ">
+                                                    <xAxis>
+                                                        <CategoryAxis label="Docking Station" side="BOTTOM" fx:id="x1" />
+                                                    </xAxis>
+                                                    <yAxis>
+                                                        <NumberAxis fx:id="y1" label="BICYCLES" side="LEFT" />
+                                                    </yAxis>
+                                                </BarChart>
+                                                <PieChart fx:id="RepairsPerTypeChart" prefHeight="400.0" prefWidth="788.0" title="Repairs per type" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                    <padding>
+                                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                    </padding>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </VBox>
+        <BorderPane fx:id="progressPane" opacity="0.75" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" visible="false">
+            <center>
+                <ProgressIndicator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="75.0" BorderPane.alignment="CENTER" />
+            </center>
+        </BorderPane>
+    </children>
+</StackPane>

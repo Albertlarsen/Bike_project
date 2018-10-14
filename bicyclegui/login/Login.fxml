@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<HBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="350.0" prefWidth="450.0" stylesheets="@../linkstyles.css"
+      xmlns="http://javafx.com/javafx/8" fx:controller="bicyclegui.login.LoginController">
+    <children>
+        <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+                prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS"/>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="350.0"
+              prefWidth="350.0" spacing="15.0" HBox.hgrow="NEVER">
+            <children>
+                <Label alignment="CENTER" prefHeight="27.0" prefWidth="530.0" text="Bicycle administration"
+                       VBox.vgrow="NEVER">
+                    <font>
+                        <Font size="30.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="50.0"/>
+                    </VBox.margin>
+                </Label>
+                <HBox fillHeight="false" prefWidth="317.0" VBox.vgrow="NEVER">
+                    <children>
+                        <Region maxHeight="0.0" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+                                prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                        <VBox prefWidth="400.0" HBox.hgrow="NEVER">
+                            <children>
+                                <Label fx:id="wrongPasswordLabel" alignment="TOP_LEFT" minHeight="0.0" prefHeight="15.0"
+                                       text="Wrong email address or password!" textFill="RED" visible="false">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets top="-15.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <TextField fx:id="emailInput" focusTraversable="false" promptText="E-mail">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0"/>
+                                    </VBox.margin>
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </TextField>
+                                <PasswordField fx:id="passwordInput" focusTraversable="false" promptText="Password">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </PasswordField>
+                                <Hyperlink focusTraversable="false" onAction="#onResetClick"
+                                           text="I forgot my password">
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT"/>
+                                    </cursor>
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </Hyperlink>
+                            </children>
+                        </VBox>
+                        <Region maxHeight="0.0" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+                                prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="10.0"/>
+                    </VBox.margin>
+                </HBox>
+                <HBox fillHeight="false" prefWidth="350.0" VBox.vgrow="NEVER">
+                    <children>
+                        <Region maxHeight="0.0" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+                                prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                        <ProgressIndicator fx:id="loadindicator" minHeight="-Infinity" minWidth="-Infinity"
+                                           opacity="0.0" prefHeight="30.0" prefWidth="30.0" HBox.hgrow="NEVER">
+                            <HBox.margin>
+                                <Insets left="-40.0" right="10.0"/>
+                            </HBox.margin>
+                        </ProgressIndicator>
+                        <Button fx:id="container" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity"
+                                minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                                onAction="#onLoginClick" prefWidth="75.0" text="Log In" HBox.hgrow="NEVER">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Button>
+                        <Hyperlink focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity"
+                                   minHeight="-Infinity" minWidth="-Infinity" onAction="#onRegisterClick"
+                                   prefHeight="30.0" text="or register" HBox.hgrow="NEVER">
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                            <cursor>
+                                <Cursor fx:constant="DEFAULT"/>
+                            </cursor>
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Hyperlink>
+                        <Region maxHeight="0.0" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+                                prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                    </children>
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+        <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0"
+                prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS"/>
+    </children>
+</HBox>

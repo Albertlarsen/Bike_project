@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="5.0" stylesheets="@../linkstyles.css"
+      xmlns="http://javafx.com/javafx/8" fx:controller="bicyclegui.bicycletypes.BicycleTypesController">
+    <children>
+        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Edit bicycle types" VBox.vgrow="NEVER">
+            <font>
+                <Font size="28.0"/>
+            </font>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+            <padding>
+                <Insets bottom="10.0" top="20.0"/>
+            </padding>
+        </Label>
+        <TitledPane animated="false" collapsible="false" maxHeight="1.7976931348623157E308"
+                    maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="300.0" text="Types"
+                    VBox.vgrow="ALWAYS">
+            <content>
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0"
+                            minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-padding: -1;">
+                    <children>
+                        <ListView fx:id="typeList" layoutX="-14.0" layoutY="-20.0" maxHeight="1.7976931348623157E308"
+                                  maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0"
+                                  style="-fx-focus-color: transparent;" AnchorPane.bottomAnchor="0.0"
+                                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+            </content>
+        </TitledPane>
+        <HBox VBox.vgrow="NEVER">
+            <children>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Hyperlink focusTraversable="false" onAction="#onAddClick" text="Add">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Hyperlink>
+                <Separator orientation="VERTICAL"/>
+                <Hyperlink focusTraversable="false" onAction="#onEditClick" text="Edit">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Hyperlink>
+                <Separator orientation="VERTICAL"/>
+                <Hyperlink focusTraversable="false" onAction="#onDeleteClick" text="Delete">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Hyperlink>
+                <Region HBox.hgrow="ALWAYS"/>
+            </children>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="5.0"/>
+    </padding>
+</VBox>

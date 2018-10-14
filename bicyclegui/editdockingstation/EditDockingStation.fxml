@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="386.0" prefWidth="400.0" spacing="8.0" xmlns="http://javafx.com/javafx/8"
+      fx:controller="bicyclegui.editdockingstation.EditDockingStationController">
+    <children>
+        <Label alignment="CENTER" prefHeight="24.0" prefWidth="415.0" text="Edit docking station">
+            <font>
+                <Font size="28.0"/>
+            </font>
+            <VBox.margin>
+                <Insets bottom="20.0" top="30.0"/>
+            </VBox.margin>
+        </Label>
+        <HBox prefHeight="178.0" prefWidth="316.0">
+            <children>
+                <Region prefHeight="200.0" prefWidth="200.0"/>
+                <VBox prefWidth="400.0" spacing="10.0">
+                    <children>
+                        <Label fx:id="invalidNameLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a name" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="nameInput" editable="false" focusTraversable="false" promptText="Name">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </TextField>
+                        <Label fx:id="invalidMaxLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a valid number" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="maxInput" focusTraversable="false" promptText="Max number of bicycles">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </TextField>
+                        <Label fx:id="invalidLatLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a valid number" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="latInput" focusTraversable="false" promptText="Degrees latitude (N)">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </TextField>
+                        <Label fx:id="invalidLongLabel" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308"
+                               minHeight="-Infinity" prefHeight="0.0" text="Please enter a valid number" textFill="RED">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="-5.0" top="-5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="longInput" focusTraversable="false" promptText="Degrees longitude (E)">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </TextField>
+                        <HBox>
+                            <children>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button mnemonicParsing="false" onAction="#onRegisterClick" text="Save station"
+                                        HBox.hgrow="NEVER">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="5.0"/>
+                                    </HBox.margin>
+                                </Button>
+                                <Region HBox.hgrow="ALWAYS"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <Region prefHeight="200.0" prefWidth="200.0"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>
